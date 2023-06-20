@@ -11,8 +11,8 @@ import random
 import time
 from rsk.constants import field_length, field_width, goal_width, defense_area_length, defense_area_width
 
-
-with rsk.Client("127.0.0.1", "") as c:
+with rsk.Client("127.0.0.1","") as c:
+#with rsk.Client("192.168.0.104", "") as c:
 
     blue1 = c.blue1
     blue2 = c.blue2
@@ -201,8 +201,6 @@ with rsk.Client("127.0.0.1", "") as c:
         else:
             blue = blue-5
             red = red+5
-            
-        print(red,blue,green)
         
         return red, green, blue
 
@@ -273,8 +271,8 @@ with rsk.Client("127.0.0.1", "") as c:
             red,green,blue = color_changer(color_timer, red, green, blue)
             all_leds_to(red,blue,green)
             color_timer = (color_timer+1) % 153
-            if color_timer == 152:
-                continuer = False
+            """if color_timer == 152:
+                continuer = False"""
 
     def enigma(start_angle, phase_shift):
         """
@@ -295,7 +293,7 @@ with rsk.Client("127.0.0.1", "") as c:
 
         """
         cross_counter = 0
-        time_counter = 0
+        #time_counter = 0
         continuer = True
         red = 255
         green = 0
@@ -317,11 +315,13 @@ with rsk.Client("127.0.0.1", "") as c:
             if (cross_counter == 79):
                 is_x_axis = not (is_x_axis)
             cross_counter = (cross_counter+1) % 80
-            if time_counter == 160:
+            """if time_counter == 160:
                 continuer = False
-            time_counter = time_counter+1
-
+            time_counter = time_counter+1"""
+    
     c.goto_configuration('side')
     c.goto_configuration('dots')
+    #firestorm(0, pi/80)   
     rainbow_firestorm(0, pi/20)
-    enigma(0, pi/40)
+    #enigma(0, pi/40)
+
